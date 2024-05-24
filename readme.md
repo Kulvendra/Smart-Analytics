@@ -49,3 +49,6 @@ sample output =>
             "text": "Total Fees vs Matter Number"
         }
     }]
+
+
+If u want to use streaming chat then first generat the database schema using generate_schema_for_all_tables() then set the postgres config and then start the streamlit app
