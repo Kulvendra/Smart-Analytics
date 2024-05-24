@@ -1,0 +1,1096 @@
+Schema of table courtinfo:
+Column Name | Data Type | Char Max Length | Numeric Precision | Is Nullable | Default Value
+------------------------------------------------------------------------------------------
+id | integer |  | 32 | NO | 
+archivablebehaviorisarchived | boolean |  |  | YES | 
+casenumber | text |  |  | YES | 
+comments | text |  |  | YES | 
+court | integer |  | 32 | YES | 
+courtdate | date |  |  | YES | 
+createdat | timestamp without time zone |  |  | YES | 
+createdby | text |  |  | YES | 
+externalid | text |  |  | YES | 
+filedate | date |  |  | YES | 
+jurisdiction | integer |  | 32 | YES | 
+matter | integer |  | 32 | YES | 
+updatedat | timestamp without time zone |  |  | YES | 
+updatedby | text |  |  | YES | 
+
+Indices:
+courtinfo_pkey: CREATE UNIQUE INDEX courtinfo_pkey ON public.courtinfo USING btree (id)
+
+Constraints:
+courtinfo_pkey (PRIMARY KEY): Column - id
+fk_courtinfo_matter (FOREIGN KEY): Column - matter, References matter(id)
+
+====================================================================================================
+
+Schema of table invoiceallocation:
+Column Name | Data Type | Char Max Length | Numeric Precision | Is Nullable | Default Value
+------------------------------------------------------------------------------------------
+id | integer |  | 32 | NO | 
+allocationstring | text |  |  | YES | 
+amount | numeric |  |  | YES | 
+archivablebehaviorisarchived | boolean |  |  | YES | 
+createdat | timestamp without time zone |  |  | YES | 
+createdby | text |  |  | YES | 
+currency | text |  |  | YES | 
+custombusinessunit | text |  |  | YES | 
+customobjectaccount | text |  |  | YES | 
+customsubaccount | text |  |  | YES | 
+exchangerates | ARRAY |  |  | YES | 
+invoice | integer |  | 32 | YES | 
+originalentityid | integer |  | 32 | YES | 
+percentage | numeric |  |  | YES | 
+updatedat | timestamp without time zone |  |  | YES | 
+updatedby | text |  |  | YES | 
+version | numeric |  |  | YES | 
+versionstatus | text |  |  | YES | 
+
+Indices:
+invoiceallocation_pkey: CREATE UNIQUE INDEX invoiceallocation_pkey ON public.invoiceallocation USING btree (id)
+
+Constraints:
+invoiceallocation_pkey (PRIMARY KEY): Column - id
+
+====================================================================================================
+
+Schema of table invoiceheaders:
+Column Name | Data Type | Char Max Length | Numeric Precision | Is Nullable | Default Value
+------------------------------------------------------------------------------------------
+id | integer |  | 32 | NO | 
+addressforvendor | text |  |  | YES | 
+adjustmentlineitems | ARRAY |  |  | YES | 
+afainvoiceafadetailss | ARRAY |  |  | YES | 
+allocationstype | integer |  | 32 | YES | 
+approvalinstance | integer |  | 32 | YES | 
+archivablebehaviorisarchived | boolean |  |  | YES | 
+clientmatterid | text |  |  | YES | 
+createdat | timestamp without time zone |  |  | YES | 
+createdby | text |  |  | YES | 
+currency | text |  |  | YES | 
+currentstep | integer |  | 32 | YES | 
+currentsteppersonname | text |  |  | YES | 
+custombypasslbastep | boolean |  |  | YES | 
+customdatesenttoap | date |  |  | YES | 
+custompayment | integer |  | 32 | YES | 
+customskipap | boolean |  |  | YES | 
+daysatcurrentstep | integer |  | 32 | YES | 
+description | text |  |  | YES | 
+detaillineitems | ARRAY |  |  | YES | 
+documents | ARRAY |  |  | YES | 
+donotsendtoappost | boolean |  |  | YES | 
+epacket | integer |  | 32 | YES | 
+entitydavid | integer |  | 32 | YES | 
+entitydavname | text |  |  | YES | 
+entitydavtitle | text |  |  | YES | 
+entityname | text |  |  | YES | 
+entityrecordname | text |  |  | YES | 
+errormessages | ARRAY |  |  | YES | 
+exchangerates | ARRAY |  |  | YES | 
+externalcomment | text |  |  | YES | 
+externalid | text |  |  | YES | 
+fiscalperiod | integer |  | 32 | YES | 
+hasdocuments | boolean |  |  | YES | 
+haserrors | boolean |  |  | YES | 
+hastax | boolean |  |  | YES | 
+hasunstagedattachments | boolean |  |  | YES | 
+haswarnings | boolean |  |  | YES | 
+headeradjusted | boolean |  |  | YES | 
+indraft | boolean |  |  | YES | 
+internalcomment | text |  |  | YES | 
+invoiceallocationtotalpercentagewarning | text |  |  | YES | 
+invoicedate | date |  |  | YES | 
+invoicedisposition | integer |  | 32 | YES | 
+invoiceenddate | date |  |  | YES | 
+invoiceforwardtopeople | ARRAY |  |  | YES | 
+invoicemethod | integer |  | 32 | YES | 
+invoicenumber | text |  |  | YES | 
+invoicestartdate | date |  |  | YES | 
+invoicestatus | integer |  | 32 | YES | 
+invoicesummary | integer |  | 32 | YES | 
+invoicetitle | text |  |  | YES | 
+invoicetype | integer |  | 32 | YES | 
+invoiceallocations | ARRAY |  |  | YES | 
+invoicehistorys | ARRAY |  |  | YES | 
+isappealed | boolean |  |  | YES | 
+isdetailinvoice | boolean |  |  | YES | 
+islbaadjustedinpostworkflow | boolean |  |  | YES | 
+islbrbillingruleadjusted | boolean |  |  | YES | 
+islbrinvoice | boolean |  |  | YES | 
+ispartialpayenabled | boolean |  |  | YES | 
+isrecalculatetotal | boolean |  |  | YES | 
+issubtotalinvoice | boolean |  |  | YES | 
+isvoided | boolean |  |  | YES | 
+isvolumeafa | boolean |  |  | YES | 
+lawfirmmatterid | text |  |  | YES | 
+lbaenabled | boolean |  |  | YES | 
+lineitemtaxsummary | ARRAY |  |  | YES | 
+matter | integer |  | 32 | YES | 
+matterbillingtype | integer |  | 32 | YES | 
+matterbudgets | ARRAY |  |  | YES | 
+matterfinalbill | boolean |  |  | YES | 
+matterorg | integer |  | 32 | YES | 
+matterperson | integer |  | 32 | YES | 
+mattertype | integer |  | 32 | YES | 
+organization | integer |  | 32 | YES | 
+ponumber | text |  |  | YES | 
+practiceareabusinessunit | integer |  | 32 | YES | 
+previoussteppersonname | text |  |  | YES | 
+receiveddate | timestamp without time zone |  |  | YES | 
+regulatorysegments | ARRAY |  |  | YES | 
+rejectreasoncodes | ARRAY |  |  | YES | 
+rejectedbyrulepermutation | integer |  | 32 | YES | 
+reportnettotal | numeric |  |  | YES | 
+reporttaxtotal | numeric |  |  | YES | 
+searchtext | text |  |  | YES | 
+signedby | integer |  | 32 | YES | 
+signeddate | date |  |  | YES | 
+stagingmatternumber | text |  |  | YES | 
+stagingorganizationnumber | text |  |  | YES | 
+summarylineitems | ARRAY |  |  | YES | 
+totalamount | numeric |  |  | YES | 
+totaldiscountamount | numeric |  |  | YES | 
+totalexpenseadjustment | numeric |  |  | YES | 
+totalexpenseadjustmentpercentage | numeric |  |  | YES | 
+totalexpensediscount | numeric |  |  | YES | 
+totalexpensediscountpercentage | numeric |  |  | YES | 
+totalfeeadjustment | numeric |  |  | YES | 
+totalfeeadjustmentpercentage | numeric |  |  | YES | 
+totalfeediscount | numeric |  |  | YES | 
+totalfeediscountpercentage | numeric |  |  | YES | 
+totalgrossamount | numeric |  |  | YES | 
+totalgrossexpenseamount | numeric |  |  | YES | 
+totalgrossfeeamount | numeric |  |  | YES | 
+totalheaderadjustment | numeric |  |  | YES | 
+totalpayamount | numeric |  |  | YES | 
+totaltaxamount | numeric |  |  | YES | 
+updatedat | timestamp without time zone |  |  | YES | 
+updatedby | text |  |  | YES | 
+usesubtotallineitem | boolean |  |  | YES | 
+voidreasoncodes | ARRAY |  |  | YES | 
+warningmessages | ARRAY |  |  | YES | 
+warningsources | ARRAY |  |  | YES | 
+warningtext | text |  |  | YES | 
+webfolderlinkfortemplate | text |  |  | YES | 
+webfoldernamejsescaped | text |  |  | YES | 
+
+Indices:
+invoiceheaders_pkey: CREATE UNIQUE INDEX invoiceheaders_pkey ON public.invoiceheaders USING btree (id)
+
+Constraints:
+fk_invoiceheaders_matter (FOREIGN KEY): Column - matter, References matter(id)
+fk_invoiceheaders_matterperson (FOREIGN KEY): Column - matterperson, References person(id)
+fk_invoiceheaders_mattertype (FOREIGN KEY): Column - mattertype, References mattertype(id)
+fk_invoiceheaders_organization (FOREIGN KEY): Column - organization, References organization(id)
+invoiceheaders_pkey (PRIMARY KEY): Column - id
+
+====================================================================================================
+
+Schema of table invoiceheaders_invoiceallocation:
+Column Name | Data Type | Char Max Length | Numeric Precision | Is Nullable | Default Value
+------------------------------------------------------------------------------------------
+invoiceheaders_id | integer |  | 32 | NO | 
+invoiceallocation_id | integer |  | 32 | NO | 
+
+Indices:
+invoiceheaders_invoiceallocation_pkey: CREATE UNIQUE INDEX invoiceheaders_invoiceallocation_pkey ON public.invoiceheaders_invoiceallocation USING btree (invoiceheaders_id, invoiceallocation_id)
+
+Constraints:
+fk_invoiceheaders_invoiceallocation_invoiceheaders_id (FOREIGN KEY): Column - invoiceheaders_id, References invoiceheaders(id)
+invoiceheaders_invoiceallocation_pkey (PRIMARY KEY): Column - invoiceheaders_id
+invoiceheaders_invoiceallocation_pkey (PRIMARY KEY): Column - invoiceheaders_id
+invoiceheaders_invoiceallocation_pkey (PRIMARY KEY): Column - invoiceallocation_id
+invoiceheaders_invoiceallocation_pkey (PRIMARY KEY): Column - invoiceallocation_id
+
+====================================================================================================
+
+Schema of table invoiceheaders_lineitems:
+Column Name | Data Type | Char Max Length | Numeric Precision | Is Nullable | Default Value
+------------------------------------------------------------------------------------------
+invoiceheaders_id | integer |  | 32 | NO | 
+lineitems_id | integer |  | 32 | NO | 
+
+Indices:
+invoiceheaders_lineitems_pkey: CREATE UNIQUE INDEX invoiceheaders_lineitems_pkey ON public.invoiceheaders_lineitems USING btree (invoiceheaders_id, lineitems_id)
+
+Constraints:
+fk_invoiceheaders_lineitems_invoiceheaders_id (FOREIGN KEY): Column - invoiceheaders_id, References invoiceheaders(id)
+fk_invoiceheaders_lineitems_lineitems_id (FOREIGN KEY): Column - lineitems_id, References lineitems(id)
+invoiceheaders_lineitems_pkey (PRIMARY KEY): Column - invoiceheaders_id
+invoiceheaders_lineitems_pkey (PRIMARY KEY): Column - invoiceheaders_id
+invoiceheaders_lineitems_pkey (PRIMARY KEY): Column - lineitems_id
+invoiceheaders_lineitems_pkey (PRIMARY KEY): Column - lineitems_id
+
+====================================================================================================
+
+Schema of table lineitems:
+Column Name | Data Type | Char Max Length | Numeric Precision | Is Nullable | Default Value
+------------------------------------------------------------------------------------------
+id | integer |  | 32 | NO | 
+activitycode | integer |  | 32 | YES | 
+adjustmentmessages | ARRAY |  |  | YES | 
+adjustmentsources | ARRAY |  |  | YES | 
+appealedattributes | text |  |  | YES | 
+archivablebehaviorisarchived | boolean |  |  | YES | 
+calculatednetamount | numeric |  |  | YES | 
+checkmark | boolean |  |  | YES | 
+commentcount | integer |  | 32 | YES | 
+createdat | timestamp without time zone |  |  | YES | 
+createdby | text |  |  | YES | 
+customlbrcomments | text |  |  | YES | 
+description | text |  |  | YES | 
+detaillineitemchanges | ARRAY |  |  | YES | 
+discountamount | numeric |  |  | YES | 
+draft | boolean |  |  | YES | 
+exchangerates | ARRAY |  |  | YES | 
+expensecode | integer |  | 32 | YES | 
+flag | boolean |  |  | YES | 
+grossamount | numeric |  |  | YES | 
+header | integer |  | 32 | YES | 
+isadjustedmanually | boolean |  |  | YES | 
+isdonotupdateparent | boolean |  |  | YES | 
+isexpense | boolean |  |  | YES | 
+isfee | boolean |  |  | YES | 
+isfeeorexpense | boolean |  |  | YES | 
+isrecommendedadjustmentmade | boolean |  |  | YES | 
+istax | boolean |  |  | YES | 
+isvendoradjustment | boolean |  |  | YES | 
+islfuserlastadjusted | boolean |  |  | YES | 
+isnewlineitemcommentadded | boolean |  |  | YES | 
+lbaaidescription | text |  |  | YES | 
+lbaaigrade | integer |  | 32 | YES | 
+lbaaireason | text |  |  | YES | 
+lbarecommendedadjustmentamount | numeric |  |  | YES | 
+lineitemcomments | ARRAY |  |  | YES | 
+lineitemdate | date |  |  | YES | 
+lineitemnumber | text |  |  | YES | 
+lineitemtype | integer |  | 32 | YES | 
+netamount | numeric |  |  | YES | 
+originalentityid | integer |  | 32 | YES | 
+payamount | numeric |  |  | YES | 
+personorg | integer |  | 32 | YES | 
+rate | numeric |  |  | YES | 
+redlineadjustment | numeric |  |  | YES | 
+redlinetotal | numeric |  |  | YES | 
+submittedadjustmentamount | numeric |  |  | YES | 
+submitteddiscount | numeric |  |  | YES | 
+submittedgrossamount | numeric |  |  | YES | 
+submittednetamount | numeric |  |  | YES | 
+submittedrate | numeric |  |  | YES | 
+submittedunits | numeric |  |  | YES | 
+taskcode | integer |  | 32 | YES | 
+taskorexpensecode | text |  |  | YES | 
+taxamount | numeric |  |  | YES | 
+taxableamount | numeric |  |  | YES | 
+taxes | ARRAY |  |  | YES | 
+tkidfromepacket | text |  |  | YES | 
+trackchangecount | integer |  | 32 | YES | 
+units | numeric |  |  | YES | 
+updatedat | timestamp without time zone |  |  | YES | 
+updatedby | text |  |  | YES | 
+version | numeric |  |  | YES | 
+versionstatus | text |  |  | YES | 
+warningcount | integer |  | 32 | YES | 
+warningmessagesource | text |  |  | YES | 
+warningmessages | ARRAY |  |  | YES | 
+warningsources | ARRAY |  |  | YES | 
+warningtext | text |  |  | YES | 
+
+Indices:
+lineitems_pkey: CREATE UNIQUE INDEX lineitems_pkey ON public.lineitems USING btree (id)
+
+Constraints:
+lineitems_pkey (PRIMARY KEY): Column - id
+
+====================================================================================================
+
+Schema of table matter:
+Column Name | Data Type | Char Max Length | Numeric Precision | Is Nullable | Default Value
+------------------------------------------------------------------------------------------
+id | integer |  | 32 | NO | 
+activeexternalorganizations | ARRAY |  |  | YES | 
+activeexternalorganizationscount | integer |  | 32 | YES | 
+afaheaderlist | ARRAY |  |  | YES | 
+allorganizations | ARRAY |  |  | YES | 
+allrelatedmatters | ARRAY |  |  | YES | 
+allocations | ARRAY |  |  | YES | 
+approvaltemplatematteraccrual | integer |  | 32 | YES | 
+archivablebehaviorisarchived | boolean |  |  | YES | 
+aredatedefaultreceived | date |  |  | YES | 
+aredateoforiginalrequest | date |  |  | YES | 
+aredefaultcuredate | date |  |  | YES | 
+areincomingdefault | integer |  | 32 | YES | 
+areoutgoingdefault | integer |  | 32 | YES | 
+asmmaterialsdeliveredtostakeholders | boolean |  |  | YES | 
+autogeneratematternumber | boolean |  |  | YES | 
+bankruptcyassociatedmatter | integer |  | 32 | YES | 
+bankruptcycrowninterest | integer |  | 32 | YES | 
+bankruptcydatefiled | date |  |  | YES | 
+bankruptcydebtorname | text |  |  | YES | 
+bankruptcydebtortype | integer |  | 32 | YES | 
+bankruptcyphase | integer |  | 32 | YES | 
+bankruptcypropertydescription | text |  |  | YES | 
+boardmeetingmaterialsdeliveredtostakeholders | boolean |  |  | YES | 
+briefdescription | text |  |  | YES | 
+budgetapprovaltemplate | integer |  | 32 | YES | 
+city | text |  |  | YES | 
+closedate | date |  |  | YES | 
+complexity | integer |  | 32 | YES | 
+contractassignable | boolean |  |  | YES | 
+contractconfidential | boolean |  |  | YES | 
+contractlegaldepartmentcompletiondate | date |  |  | YES | 
+contractreasonforlegalreview | ARRAY |  |  | YES | 
+contractstatus | integer |  | 32 | YES | 
+courtinfos | ARRAY |  |  | YES | 
+createdat | timestamp without time zone |  |  | YES | 
+createdby | text |  |  | YES | 
+custombankruptcyexposures | ARRAY |  |  | YES | 
+customccisitecontacts | ARRAY |  |  | YES | 
+customemploymentissuecomments | text |  |  | YES | 
+customemploymentissues | ARRAY |  |  | YES | 
+customgeographic | ARRAY |  |  | YES | 
+customislegalbannerrequired | boolean |  |  | YES | 
+customlegacymattersummary | text |  |  | YES | 
+customlegalbannerreason | integer |  | 32 | YES | 
+customprimaryoutsidecounsel | integer |  | 32 | YES | 
+customprojectcoordinator | integer |  | 32 | YES | 
+customrealestatedirector | integer |  | 32 | YES | 
+customrealestatemanager | integer |  | 32 | YES | 
+customrecentnarrative | text |  |  | YES | 
+customrecentnarrativedate | date |  |  | YES | 
+customreopeneddate | date |  |  | YES | 
+customsitedata | ARRAY |  |  | YES | 
+customgeographics | ARRAY |  |  | YES | 
+customlegacycrownpartyinterests | integer |  | 32 | YES | 
+customlegacymatterlevel | integer |  | 32 | YES | 
+custommattersitedatas | ARRAY |  |  | YES | 
+description | text |  |  | YES | 
+documents | ARRAY |  |  | YES | 
+emaildocuments | ARRAY |  |  | YES | 
+emaildocumentspermissions | text |  |  | YES | 
+entitydavid | integer |  | 32 | YES | 
+entitydavname | text |  |  | YES | 
+entitydavnumber | text |  |  | YES | 
+entitydavtitle | text |  |  | YES | 
+entityname | text |  |  | YES | 
+entityrecordname | text |  |  | YES | 
+escalatedmatter | boolean |  |  | YES | 
+exchangerates | ARRAY |  |  | YES | 
+externalid | text |  |  | YES | 
+financingfinancingamount | numeric |  |  | YES | 
+grinstallationtype | integer |  | 32 | YES | 
+gropposingentities | text |  |  | YES | 
+grtypeofdispute | text |  |  | YES | 
+histories | ARRAY |  |  | YES | 
+indemnified | boolean |  |  | YES | 
+insurancecoverage | boolean |  |  | YES | 
+internalbusinesscontact | text |  |  | YES | 
+invoiceapprovaltemplate | integer |  | 32 | YES | 
+invoices | ARRAY |  |  | YES | 
+iscreatemultiplebudgetsnew | boolean |  |  | YES | 
+islfmrmatter | boolean |  |  | YES | 
+isprivate | boolean |  |  | YES | 
+leclaimorchargetype | integer |  | 32 | YES | 
+ledatehired | date |  |  | YES | 
+ledemandletter | boolean |  |  | YES | 
+ledepartment | text |  |  | YES | 
+ledescriptionofclaimorcharge | text |  |  | YES | 
+leemployeejobtitle | text |  |  | YES | 
+leemployeename | text |  |  | YES | 
+leemployeesmanager | text |  |  | YES | 
+lemiscellaneousemployeeinformation | text |  |  | YES | 
+legacymatter | boolean |  |  | YES | 
+legalbillreview | integer |  | 32 | YES | 
+legalservicesrequest | integer |  | 32 | YES | 
+legalservicesrequestdescription | text |  |  | YES | 
+litigationcrownpartyinterests | integer |  | 32 | YES | 
+litigationlegalhold | boolean |  |  | YES | 
+litigationmatterlevel | integer |  | 32 | YES | 
+longmattername | text |  |  | YES | 
+mapurchaseprice | numeric |  |  | YES | 
+matteraccruals | ARRAY |  |  | YES | 
+matterallocationtotalpercentagewarning | text |  |  | YES | 
+matterbudgets | ARRAY |  |  | YES | 
+matterevents | ARRAY |  |  | YES | 
+mattereventspermissions | text |  |  | YES | 
+matterexposures | ARRAY |  |  | YES | 
+matternarratives | ARRAY |  |  | YES | 
+matternarrativespermissions | text |  |  | YES | 
+matternumber | text |  |  | YES | 
+matterobjectname | text |  |  | YES | 
+matterperson | integer |  | 32 | YES | 
+matterreserves | ARRAY |  |  | YES | 
+mattersettlements | ARRAY |  |  | YES | 
+matterstatus | integer |  | 32 | YES | 
+mattersubtype | integer |  | 32 | YES | 
+mattersubtype1 | ARRAY |  |  | YES | 
+mattertype | integer |  | 32 | YES | 
+mattertypes | ARRAY |  |  | YES | 
+matters | ARRAY |  |  | YES | 
+mattersrelated | ARRAY |  |  | YES | 
+mattershistorys | ARRAY |  |  | YES | 
+moneyservice | text |  |  | YES | 
+name | text |  |  | YES | 
+netamount | numeric |  |  | YES | 
+opendate | date |  |  | YES | 
+opposingparty | text |  |  | YES | 
+optoutlbr | boolean |  |  | YES | 
+organizations | ARRAY |  |  | YES | 
+people | ARRAY |  |  | YES | 
+practiceareabusinessunit | integer |  | 32 | YES | 
+primaryexternalcontactname | text |  |  | YES | 
+primaryexternalorganizationname | text |  |  | YES | 
+primaryexternalperson | integer |  | 32 | YES | 
+primaryinternalcontactname | text |  |  | YES | 
+primaryinternalperson | integer |  | 32 | YES | 
+primarymattertype | integer |  | 32 | YES | 
+reainvolvement | boolean |  |  | YES | 
+reaissuedescription | text |  |  | YES | 
+realandlordrepbylegalcounsel | boolean |  |  | YES | 
+realandlordrepresentationbyconsultant | boolean |  |  | YES | 
+realandlordtype | integer |  | 32 | YES | 
+realegalreviewreason | integer |  | 32 | YES | 
+realitigationinvolved | boolean |  |  | YES | 
+reapendinglandlorddisputedefault | boolean |  |  | YES | 
+reapreviouslandlorddisputes | boolean |  |  | YES | 
+reaspecialcircumstance | integer |  | 32 | YES | 
+readonlytimekeeperrates | ARRAY |  |  | YES | 
+recalculateflag | boolean |  |  | YES | 
+searchtext | text |  |  | YES | 
+serviceofprocesss | ARRAY |  |  | YES | 
+source | integer |  | 32 | YES | 
+sparseinvoices | ARRAY |  |  | YES | 
+spendtodate | numeric |  |  | YES | 
+state | integer |  | 32 | YES | 
+typeofdocument | integer |  | 32 | YES | 
+updatedat | timestamp without time zone |  |  | YES | 
+updatedby | text |  |  | YES | 
+usermatters | ARRAY |  |  | YES | 
+webfolderlinkfortemplate | text |  |  | YES | 
+webfoldernamejsescaped | text |  |  | YES | 
+workflowresponsibilities | ARRAY |  |  | YES | 
+
+Indices:
+matter_pkey: CREATE UNIQUE INDEX matter_pkey ON public.matter USING btree (id)
+
+Constraints:
+fk_matter_matterstatus (FOREIGN KEY): Column - matterstatus, References matterstatus(id)
+fk_matter_mattersubtype (FOREIGN KEY): Column - mattersubtype, References mattersubtype(id)
+fk_matter_mattertype (FOREIGN KEY): Column - mattertype, References mattertype(id)
+matter_pkey (PRIMARY KEY): Column - id
+
+====================================================================================================
+
+Schema of table matter_courtinfo:
+Column Name | Data Type | Char Max Length | Numeric Precision | Is Nullable | Default Value
+------------------------------------------------------------------------------------------
+matter_id | integer |  | 32 | NO | 
+courtinfo_id | integer |  | 32 | NO | 
+
+Indices:
+matter_courtinfo_pkey: CREATE UNIQUE INDEX matter_courtinfo_pkey ON public.matter_courtinfo USING btree (matter_id, courtinfo_id)
+
+Constraints:
+fk_matter_courtinfo_courtinfo_id (FOREIGN KEY): Column - courtinfo_id, References courtinfo(id)
+fk_matter_courtinfo_matter_id (FOREIGN KEY): Column - matter_id, References matter(id)
+matter_courtinfo_pkey (PRIMARY KEY): Column - matter_id
+matter_courtinfo_pkey (PRIMARY KEY): Column - matter_id
+matter_courtinfo_pkey (PRIMARY KEY): Column - courtinfo_id
+matter_courtinfo_pkey (PRIMARY KEY): Column - courtinfo_id
+
+====================================================================================================
+
+Schema of table matter_matterevent:
+Column Name | Data Type | Char Max Length | Numeric Precision | Is Nullable | Default Value
+------------------------------------------------------------------------------------------
+matter_id | integer |  | 32 | NO | 
+matterevent_id | integer |  | 32 | NO | 
+
+Indices:
+matter_matterevent_pkey: CREATE UNIQUE INDEX matter_matterevent_pkey ON public.matter_matterevent USING btree (matter_id, matterevent_id)
+
+Constraints:
+fk_matter_matterevent_matter_id (FOREIGN KEY): Column - matter_id, References matter(id)
+fk_matter_matterevent_matterevent_id (FOREIGN KEY): Column - matterevent_id, References matterevent(id)
+matter_matterevent_pkey (PRIMARY KEY): Column - matter_id
+matter_matterevent_pkey (PRIMARY KEY): Column - matter_id
+matter_matterevent_pkey (PRIMARY KEY): Column - matterevent_id
+matter_matterevent_pkey (PRIMARY KEY): Column - matterevent_id
+
+====================================================================================================
+
+Schema of table matter_matternarrative:
+Column Name | Data Type | Char Max Length | Numeric Precision | Is Nullable | Default Value
+------------------------------------------------------------------------------------------
+matter_id | integer |  | 32 | NO | 
+matternarrative_id | integer |  | 32 | NO | 
+
+Indices:
+matter_matternarrative_pkey: CREATE UNIQUE INDEX matter_matternarrative_pkey ON public.matter_matternarrative USING btree (matter_id, matternarrative_id)
+
+Constraints:
+fk_matter_matternarrative_matter_id (FOREIGN KEY): Column - matter_id, References matter(id)
+fk_matter_matternarrative_matternarrative_id (FOREIGN KEY): Column - matternarrative_id, References matternarrative(id)
+matter_matternarrative_pkey (PRIMARY KEY): Column - matter_id
+matter_matternarrative_pkey (PRIMARY KEY): Column - matter_id
+matter_matternarrative_pkey (PRIMARY KEY): Column - matternarrative_id
+matter_matternarrative_pkey (PRIMARY KEY): Column - matternarrative_id
+
+====================================================================================================
+
+Schema of table matter_organization:
+Column Name | Data Type | Char Max Length | Numeric Precision | Is Nullable | Default Value
+------------------------------------------------------------------------------------------
+matter_id | integer |  | 32 | NO | 
+matterorganization_id | integer |  | 32 | NO | 
+
+Indices:
+matter_organization_pkey: CREATE UNIQUE INDEX matter_organization_pkey ON public.matter_organization USING btree (matter_id, matterorganization_id)
+
+Constraints:
+fk_matter_organization_matter_id (FOREIGN KEY): Column - matter_id, References matter(id)
+matter_organization_pkey (PRIMARY KEY): Column - matter_id
+matter_organization_pkey (PRIMARY KEY): Column - matter_id
+matter_organization_pkey (PRIMARY KEY): Column - matterorganization_id
+matter_organization_pkey (PRIMARY KEY): Column - matterorganization_id
+
+====================================================================================================
+
+Schema of table matterevent:
+Column Name | Data Type | Char Max Length | Numeric Precision | Is Nullable | Default Value
+------------------------------------------------------------------------------------------
+id | integer |  | 32 | NO | 
+categorytype | integer |  | 32 | YES | 
+completeddate | date |  |  | YES | 
+createdat | timestamp without time zone |  |  | YES | 
+createdby | text |  |  | YES | 
+description | text |  |  | YES | 
+duedate | date |  |  | YES | 
+enddatetime | timestamp without time zone |  |  | YES | 
+eventname | text |  |  | YES | 
+eventowner | text |  |  | YES | 
+eventtype | integer |  | 32 | YES | 
+location | text |  |  | YES | 
+loggedinuseremailaddress | text |  |  | YES | 
+name | text |  |  | YES | 
+people | ARRAY |  |  | YES | 
+primaryemailaddresses | text |  |  | YES | 
+startdatetime | timestamp without time zone |  |  | YES | 
+uniqueid | text |  |  | YES | 
+updatedat | timestamp without time zone |  |  | YES | 
+updatedby | text |  |  | YES | 
+archivablebehaviorisarchived | boolean |  |  | YES | 
+matter | integer |  | 32 | YES | 
+mattereventname | text |  |  | YES | 
+
+Indices:
+matterevent_pkey: CREATE UNIQUE INDEX matterevent_pkey ON public.matterevent USING btree (id)
+
+Constraints:
+fk_matterevent_matter (FOREIGN KEY): Column - matter, References matter(id)
+matterevent_pkey (PRIMARY KEY): Column - id
+
+====================================================================================================
+
+Schema of table matterlevel:
+Column Name | Data Type | Char Max Length | Numeric Precision | Is Nullable | Default Value
+------------------------------------------------------------------------------------------
+id | integer |  | 32 | NO | 
+archivablebehaviorisarchived | boolean |  |  | YES | 
+code | text |  |  | YES | 
+createdat | timestamp without time zone |  |  | YES | 
+createdby | text |  |  | YES | 
+displayname | text |  |  | YES | 
+active | boolean |  |  | YES | 
+updatedat | timestamp without time zone |  |  | YES | 
+updatedby | text |  |  | YES | 
+
+Indices:
+matterlevel_pkey: CREATE UNIQUE INDEX matterlevel_pkey ON public.matterlevel USING btree (id)
+
+Constraints:
+matterlevel_pkey (PRIMARY KEY): Column - id
+
+====================================================================================================
+
+Schema of table matternarrative:
+Column Name | Data Type | Char Max Length | Numeric Precision | Is Nullable | Default Value
+------------------------------------------------------------------------------------------
+id | integer |  | 32 | NO | 
+archivablebehaviorisarchived | boolean |  |  | YES | 
+collaboration | boolean |  |  | YES | 
+createdat | timestamp without time zone |  |  | YES | 
+createdby | text |  |  | YES | 
+description | text |  |  | YES | 
+enteredby | text |  |  | YES | 
+enteredon | date |  |  | YES | 
+externalid | text |  |  | YES | 
+matter | integer |  | 32 | YES | 
+narrative | text |  |  | YES | 
+narrativedate | timestamp without time zone |  |  | YES | 
+narrativetype | integer |  | 32 | YES | 
+updatedat | timestamp without time zone |  |  | YES | 
+updatedby | text |  |  | YES | 
+
+Indices:
+matternarrative_pkey: CREATE UNIQUE INDEX matternarrative_pkey ON public.matternarrative USING btree (id)
+
+Constraints:
+fk_matternarrative_matter (FOREIGN KEY): Column - matter, References matter(id)
+matternarrative_pkey (PRIMARY KEY): Column - id
+
+====================================================================================================
+
+Schema of table matterorganization:
+Column Name | Data Type | Char Max Length | Numeric Precision | Is Nullable | Default Value
+------------------------------------------------------------------------------------------
+id | integer |  | 32 | NO | 
+archivablebehaviorisarchived | boolean |  |  | YES | 
+authorizeddate | date |  |  | YES | 
+authorizeddateasstring | text |  |  | YES | 
+budgetnotificationcontact | integer |  | 32 | YES | 
+budgets | ARRAY |  |  | YES | 
+canbilltomatter | boolean |  |  | YES | 
+comments | text |  |  | YES | 
+company | text |  |  | YES | 
+createdat | timestamp without time zone |  |  | YES | 
+createdby | text |  |  | YES | 
+documentcollaborator | boolean |  |  | YES | 
+enddate | date |  |  | YES | 
+externalid | text |  |  | YES | 
+invoices | ARRAY |  |  | YES | 
+isactive | boolean |  |  | YES | 
+iscreatemultiplebudgetsnew | boolean |  |  | YES | 
+isduplicateactive | boolean |  |  | YES | 
+isduplicateprimary | boolean |  |  | YES | 
+isprimary | boolean |  |  | YES | 
+matter | integer |  | 32 | YES | 
+mattercollaborator | boolean |  |  | YES | 
+matternumber | text |  |  | YES | 
+netamount | numeric |  |  | YES | 
+orgsurvey | integer |  | 32 | YES | 
+organization | integer |  | 32 | YES | 
+phonenumber | text |  |  | YES | 
+primarycontact | text |  |  | YES | 
+roleinvolvementtype | integer |  | 32 | YES | 
+startdate | date |  |  | YES | 
+updatedat | timestamp without time zone |  |  | YES | 
+updatedby | text |  |  | YES | 
+vendormatterdisplayname | text |  |  | YES | 
+vendormatterdisplaynumber | text |  |  | YES | 
+
+Indices:
+matterorganization_pkey: CREATE UNIQUE INDEX matterorganization_pkey ON public.matterorganization USING btree (id)
+
+Constraints:
+fk_matterorganization_matter (FOREIGN KEY): Column - matter, References matter(id)
+fk_matterorganization_organization (FOREIGN KEY): Column - organization, References organization(id)
+matterorganization_pkey (PRIMARY KEY): Column - id
+
+====================================================================================================
+
+Schema of table matterperson:
+Column Name | Data Type | Char Max Length | Numeric Precision | Is Nullable | Default Value
+------------------------------------------------------------------------------------------
+id | integer |  | 32 | NO | 
+archivablebehaviorisarchived | boolean |  |  | YES | 
+comments | text |  |  | YES | 
+createdat | timestamp without time zone |  |  | YES | 
+createdby | text |  |  | YES | 
+currentrateamount | numeric |  |  | YES | 
+currentrategrossamount | numeric |  |  | YES | 
+deletecontent | text |  |  | YES | 
+displayrate | text |  |  | YES | 
+enddate | date |  |  | YES | 
+externalid | text |  |  | YES | 
+isactive | boolean |  |  | YES | 
+isduplicateexternalprimary | boolean |  |  | YES | 
+isduplicateinternalprimary | boolean |  |  | YES | 
+isnewfromspreadsheet | boolean |  |  | YES | 
+matter | integer |  | 32 | YES | 
+matterpersontype | integer |  | 32 | YES | 
+newrategrossamount | numeric |  |  | YES | 
+newrateproposedrate | numeric |  |  | YES | 
+organizationname | text |  |  | YES | 
+parentmatter | integer |  | 32 | YES | 
+person | integer |  | 32 | YES | 
+personorg | integer |  | 32 | YES | 
+primaryphone | text |  |  | YES | 
+roleinvolvement | integer |  | 32 | YES | 
+roleinvolvementtype | integer |  | 32 | YES | 
+startdate | date |  |  | YES | 
+timekeeperrate | ARRAY |  |  | YES | 
+updatedat | timestamp without time zone |  |  | YES | 
+updatedby | text |  |  | YES | 
+
+Indices:
+matterperson_pkey: CREATE UNIQUE INDEX matterperson_pkey ON public.matterperson USING btree (id)
+
+Constraints:
+fk_matterperson_matter (FOREIGN KEY): Column - matter, References matter(id)
+fk_matterperson_person (FOREIGN KEY): Column - person, References person(id)
+matterperson_pkey (PRIMARY KEY): Column - id
+
+====================================================================================================
+
+Schema of table matterstatus:
+Column Name | Data Type | Char Max Length | Numeric Precision | Is Nullable | Default Value
+------------------------------------------------------------------------------------------
+id | integer |  | 32 | NO | 
+active | boolean |  |  | YES | 
+code | text |  |  | YES | 
+codeandname | text |  |  | YES | 
+createdat | timestamp without time zone |  |  | YES | 
+createdby | text |  |  | YES | 
+displayname | text |  |  | YES | 
+passportcontexts | ARRAY |  |  | YES | 
+readonlycode | text |  |  | YES | 
+updatedat | timestamp without time zone |  |  | YES | 
+updatedby | text |  |  | YES | 
+
+Indices:
+matterstatus_pkey: CREATE UNIQUE INDEX matterstatus_pkey ON public.matterstatus USING btree (id)
+
+Constraints:
+matterstatus_pkey (PRIMARY KEY): Column - id
+
+====================================================================================================
+
+Schema of table mattersubtype:
+Column Name | Data Type | Char Max Length | Numeric Precision | Is Nullable | Default Value
+------------------------------------------------------------------------------------------
+id | integer |  | 32 | NO | 
+code | text |  |  | YES | 
+createdat | timestamp without time zone |  |  | YES | 
+createdby | text |  |  | YES | 
+displayname | text |  |  | YES | 
+active | boolean |  |  | YES | 
+mattertype | integer |  | 32 | YES | 
+updatedat | timestamp without time zone |  |  | YES | 
+updatedby | text |  |  | YES | 
+
+Indices:
+mattersubtype_pkey: CREATE UNIQUE INDEX mattersubtype_pkey ON public.mattersubtype USING btree (id)
+
+Constraints:
+fk_mattersubtype_mattertype (FOREIGN KEY): Column - mattertype, References mattertype(id)
+mattersubtype_pkey (PRIMARY KEY): Column - id
+
+====================================================================================================
+
+Schema of table mattertype:
+Column Name | Data Type | Char Max Length | Numeric Precision | Is Nullable | Default Value
+------------------------------------------------------------------------------------------
+id | integer |  | 32 | NO | 
+active | boolean |  |  | YES | 
+afaheaderlist | ARRAY |  |  | YES | 
+code | text |  |  | YES | 
+codeandname | text |  |  | YES | 
+createdat | timestamp without time zone |  |  | YES | 
+createdby | text |  |  | YES | 
+custompracticeareabusinessunit | ARRAY |  |  | YES | 
+displayname | text |  |  | YES | 
+folders | ARRAY |  |  | YES | 
+invoiceapprovaltemplate | integer |  | 32 | YES | 
+msmsecondarymattertypes | ARRAY |  |  | YES | 
+passportcontexts | ARRAY |  |  | YES | 
+practiceareabusinessunit | ARRAY |  |  | YES | 
+triggerslegalbanner | boolean |  |  | YES | 
+updatedat | timestamp without time zone |  |  | YES | 
+updatedby | text |  |  | YES | 
+
+Indices:
+mattertype_pkey: CREATE UNIQUE INDEX mattertype_pkey ON public.mattertype USING btree (id)
+
+Constraints:
+mattertype_pkey (PRIMARY KEY): Column - id
+
+====================================================================================================
+
+Schema of table organization:
+Column Name | Data Type | Char Max Length | Numeric Precision | Is Nullable | Default Value
+------------------------------------------------------------------------------------------
+id | integer |  | 32 | NO | 
+activemattercount | integer |  | 32 | YES | 
+activetimekeeperscount | integer |  | 32 | YES | 
+address | text |  |  | YES | 
+addresses | ARRAY |  |  | YES | 
+afaheaders | ARRAY |  |  | YES | 
+approvaltemplatelawfirmmatterrequest | integer |  | 32 | YES | 
+approvaltemplatematteraccrual | integer |  | 32 | YES | 
+billingcontact | integer |  | 32 | YES | 
+billingcontactslist | ARRAY |  |  | YES | 
+budgetapprovaltemplate | integer |  | 32 | YES | 
+cases | ARRAY |  |  | YES | 
+chartorgnamevendorid | text |  |  | YES | 
+collaborgnameandlocation | text |  |  | YES | 
+comment | text |  |  | YES | 
+courtorganizationsubtype | integer |  | 32 | YES | 
+createdate | date |  |  | YES | 
+createdat | timestamp without time zone |  |  | YES | 
+createdby | text |  |  | YES | 
+diversity | integer |  | 32 | YES | 
+documents | ARRAY |  |  | YES | 
+emailaddresses | ARRAY |  |  | YES | 
+entitydavid | integer |  | 32 | YES | 
+entitydavname | text |  |  | YES | 
+entitydavnumber | text |  |  | YES | 
+entitydavtitle | text |  |  | YES | 
+entityname | text |  |  | YES | 
+entityrecordname | text |  |  | YES | 
+extorgpeople | ARRAY |  |  | YES | 
+extorganizationsubtype | integer |  | 32 | YES | 
+externalid | text |  |  | YES | 
+imaddresses | ARRAY |  |  | YES | 
+intorgpeople | ARRAY |  |  | YES | 
+intorganizationsubtype | integer |  | 32 | YES | 
+invoiceapprovaltemplate | integer |  | 32 | YES | 
+invoices | ARRAY |  |  | YES | 
+isactive | boolean |  |  | YES | 
+isebillingvendor | boolean |  |  | YES | 
+isenabledforcollaboration | boolean |  |  | YES | 
+ispreferredvendor | boolean |  |  | YES | 
+lawfirmaccrualreviewer | integer |  | 32 | YES | 
+lawfirmtkreviewer | integer |  | 32 | YES | 
+matteraccruals | ARRAY |  |  | YES | 
+matterbudgets | ARRAY |  |  | YES | 
+matters | ARRAY |  |  | YES | 
+name | text |  |  | YES | 
+newfirmcollaborationinitiated | boolean |  |  | YES | 
+notificationclientcompany | text |  |  | YES | 
+notificationfromaddress | text |  |  | YES | 
+notificationinterval | integer |  | 32 | YES | 
+notificationtoaddress | text |  |  | YES | 
+numberofapprovedaccruals | integer |  | 32 | YES | 
+numberofpendingaccruals | integer |  | 32 | YES | 
+numberofrejectedaccruals | integer |  | 32 | YES | 
+organizationobjectname | text |  |  | YES | 
+organizationsubtype | integer |  | 32 | YES | 
+organizationtype | integer |  | 32 | YES | 
+organizationhistorys | ARRAY |  |  | YES | 
+people | ARRAY |  |  | YES | 
+phones | ARRAY |  |  | YES | 
+primaryaddress | integer |  | 32 | YES | 
+primarycity | text |  |  | YES | 
+primaryperson | text |  |  | YES | 
+primarypersonphone | text |  |  | YES | 
+primaryphone | text |  |  | YES | 
+primarystate | text |  |  | YES | 
+readonlytimekeeperrates | ARRAY |  |  | YES | 
+readonlytkrates | ARRAY |  |  | YES | 
+score | text |  |  | YES | 
+searchtext | text |  |  | YES | 
+sparseinvoices | ARRAY |  |  | YES | 
+sparsematteraccruals | ARRAY |  |  | YES | 
+sparsematterbudgets | ARRAY |  |  | YES | 
+taxid | text |  |  | YES | 
+timekeeperrateapprovaltemplate | integer |  | 32 | YES | 
+updatedat | timestamp without time zone |  |  | YES | 
+updatedby | text |  |  | YES | 
+vendorid | text |  |  | YES | 
+webfolderlinkfortemplate | text |  |  | YES | 
+webfoldernamejsescaped | text |  |  | YES | 
+webpageaddresses | ARRAY |  |  | YES | 
+
+Indices:
+organization_pkey: CREATE UNIQUE INDEX organization_pkey ON public.organization USING btree (id)
+
+Constraints:
+organization_pkey (PRIMARY KEY): Column - id
+
+====================================================================================================
+
+Schema of table organization_matter:
+Column Name | Data Type | Char Max Length | Numeric Precision | Is Nullable | Default Value
+------------------------------------------------------------------------------------------
+organization_id | integer |  | 32 | NO | 
+matterorganization_id | integer |  | 32 | NO | 
+
+Indices:
+organization_matter_pkey: CREATE UNIQUE INDEX organization_matter_pkey ON public.organization_matter USING btree (organization_id, matterorganization_id)
+
+Constraints:
+fk_organization_matter_organization_id (FOREIGN KEY): Column - organization_id, References organization(id)
+organization_matter_pkey (PRIMARY KEY): Column - organization_id
+organization_matter_pkey (PRIMARY KEY): Column - organization_id
+organization_matter_pkey (PRIMARY KEY): Column - matterorganization_id
+organization_matter_pkey (PRIMARY KEY): Column - matterorganization_id
+
+====================================================================================================
+
+Schema of table person:
+Column Name | Data Type | Char Max Length | Numeric Precision | Is Nullable | Default Value
+------------------------------------------------------------------------------------------
+id | integer |  | 32 | NO | 
+addresses | ARRAY |  |  | YES | 
+approvalauthorities | ARRAY |  |  | YES | 
+approvaltemplatematteraccrual | integer |  | 32 | YES | 
+archivablebehaviorisarchived | boolean |  |  | YES | 
+budgetapprovaltemplate | integer |  | 32 | YES | 
+collaborationrole | integer |  | 32 | YES | 
+createdate | date |  |  | YES | 
+createdat | timestamp without time zone |  |  | YES | 
+createdby | text |  |  | YES | 
+documents | ARRAY |  |  | YES | 
+emailaddress | text |  |  | YES | 
+emailaddresses | ARRAY |  |  | YES | 
+entitydavid | integer |  | 32 | YES | 
+entitydavname | text |  |  | YES | 
+entitydavnumber | text |  |  | YES | 
+entitydavtitle | text |  |  | YES | 
+entityname | text |  |  | YES | 
+entityrecordname | text |  |  | YES | 
+ethnicity | integer |  | 32 | YES | 
+externalid | text |  |  | YES | 
+externalpersontype | integer |  | 32 | YES | 
+fax | text |  |  | YES | 
+firstname | text |  |  | YES | 
+fullname | text |  |  | YES | 
+gender | integer |  | 32 | YES | 
+hasapprovalauthority | boolean |  |  | YES | 
+identifierdisplayname | text |  |  | YES | 
+imaddresses | ARRAY |  |  | YES | 
+internalpersontype | integer |  | 32 | YES | 
+invoiceapprovaltemplate | integer |  | 32 | YES | 
+invoicehistorys | ARRAY |  |  | YES | 
+isactive | boolean |  |  | YES | 
+lastname | text |  |  | YES | 
+lawfirmmatterrequests | ARRAY |  |  | YES | 
+mailingaddress | text |  |  | YES | 
+matters | ARRAY |  |  | YES | 
+mattershistorys | ARRAY |  |  | YES | 
+middlename | text |  |  | YES | 
+organizationhistorys | ARRAY |  |  | YES | 
+organizations | ARRAY |  |  | YES | 
+persontype | integer |  | 32 | YES | 
+personhistorys | ARRAY |  |  | YES | 
+phone | text |  |  | YES | 
+phones | ARRAY |  |  | YES | 
+picmatters | ARRAY |  |  | YES | 
+primaryaddresscity | text |  |  | YES | 
+primaryaddresscounty | text |  |  | YES | 
+primaryaddressline1 | text |  |  | YES | 
+primaryaddressline2 | text |  |  | YES | 
+primaryaddressstate | integer |  | 32 | YES | 
+primaryaddresszip | text |  |  | YES | 
+primaryemailaddress | text |  |  | YES | 
+primaryexpertise | integer |  | 32 | YES | 
+primaryorganization | text |  |  | YES | 
+primaryphone | text |  |  | YES | 
+readonlytimekeeperrates | ARRAY |  |  | YES | 
+salutation | integer |  | 32 | YES | 
+searchtext | text |  |  | YES | 
+secondaryexpertise | integer |  | 32 | YES | 
+suffix | text |  |  | YES | 
+timekeeperdiversity | integer |  | 32 | YES | 
+timekeeperrate | ARRAY |  |  | YES | 
+updatedat | timestamp without time zone |  |  | YES | 
+updatedby | text |  |  | YES | 
+user | integer |  | 32 | YES | 
+username | text |  |  | YES | 
+webfolderlinkfortemplate | text |  |  | YES | 
+webfoldernamejsescaped | text |  |  | YES | 
+webpageaddresses | ARRAY |  |  | YES | 
+workflowresponsibilities | ARRAY |  |  | YES | 
+yearpassbar | integer |  | 32 | YES | 
+
+Indices:
+person_pkey: CREATE UNIQUE INDEX person_pkey ON public.person USING btree (id)
+
+Constraints:
+person_pkey (PRIMARY KEY): Column - id
+
+====================================================================================================
+
+Schema of table person_matter:
+Column Name | Data Type | Char Max Length | Numeric Precision | Is Nullable | Default Value
+------------------------------------------------------------------------------------------
+person_id | integer |  | 32 | NO | 
+matterperson_id | integer |  | 32 | NO | 
+
+Indices:
+person_matter_pkey: CREATE UNIQUE INDEX person_matter_pkey ON public.person_matter USING btree (person_id, matterperson_id)
+
+Constraints:
+fk_person_matter_person_id (FOREIGN KEY): Column - person_id, References person(id)
+person_matter_pkey (PRIMARY KEY): Column - person_id
+person_matter_pkey (PRIMARY KEY): Column - person_id
+person_matter_pkey (PRIMARY KEY): Column - matterperson_id
+person_matter_pkey (PRIMARY KEY): Column - matterperson_id
+
+====================================================================================================
+
+Schema of table person_organization:
+Column Name | Data Type | Char Max Length | Numeric Precision | Is Nullable | Default Value
+------------------------------------------------------------------------------------------
+person_id | integer |  | 32 | NO | 
+personorganization_id | integer |  | 32 | NO | 
+
+Indices:
+person_organization_pkey: CREATE UNIQUE INDEX person_organization_pkey ON public.person_organization USING btree (person_id, personorganization_id)
+
+Constraints:
+fk_person_organization_person_id (FOREIGN KEY): Column - person_id, References person(id)
+person_organization_pkey (PRIMARY KEY): Column - person_id
+person_organization_pkey (PRIMARY KEY): Column - person_id
+person_organization_pkey (PRIMARY KEY): Column - personorganization_id
+person_organization_pkey (PRIMARY KEY): Column - personorganization_id
+
+====================================================================================================
+
+Schema of table personorganization:
+Column Name | Data Type | Char Max Length | Numeric Precision | Is Nullable | Default Value
+------------------------------------------------------------------------------------------
+id | integer |  | 32 | NO | 
+archivablebehaviorisarchived | boolean |  |  | YES | 
+collabcurrentrate | numeric |  |  | YES | 
+collabcurrentrateinsubmittedcurrency | numeric |  |  | YES | 
+collablastapprovedrate | numeric |  |  | YES | 
+createdat | timestamp without time zone |  |  | YES | 
+createdby | text |  |  | YES | 
+currentrate | integer |  | 32 | YES | 
+currentrateamount | numeric |  |  | YES | 
+currentrateenddate | date |  |  | YES | 
+currentrategrossamount | numeric |  |  | YES | 
+currentratehover | integer |  | 32 | YES | 
+currentratestartdate | date |  |  | YES | 
+currentratestatus | integer |  | 32 | YES | 
+deptbu | text |  |  | YES | 
+enddate | date |  |  | YES | 
+isactive | boolean |  |  | YES | 
+isbillingcontact | boolean |  |  | YES | 
+isdeactivatedbycollaboration | boolean |  |  | YES | 
+isduplicateactive | boolean |  |  | YES | 
+isduplicateprimary | boolean |  |  | YES | 
+isnewfromspreadsheet | boolean |  |  | YES | 
+isprimary | boolean |  |  | YES | 
+isprimaryaccrualreviewer | boolean |  |  | YES | 
+isprimarybudgetreviewer | boolean |  |  | YES | 
+isprimarycontact | boolean |  |  | YES | 
+isprimarytimekeeperreviewer | boolean |  |  | YES | 
+isreceiveemail | boolean |  |  | YES | 
+issecondarycollaborationreviewer | boolean |  |  | YES | 
+newrateexternalcomments | text |  |  | YES | 
+newrategrossamount | numeric |  |  | YES | 
+newrateproposedrate | numeric |  |  | YES | 
+organization | integer |  | 32 | YES | 
+person | integer |  | 32 | YES | 
+startdate | date |  |  | YES | 
+timekeeperrates | ARRAY |  |  | YES | 
+timekeeperid | text |  |  | YES | 
+timekeeperlevel | integer |  | 32 | YES | 
+updatedat | timestamp without time zone |  |  | YES | 
+updatedby | text |  |  | YES | 
+vendorpersondisplayname | text |  |  | YES | 
+
+Indices:
+personorganization_pkey: CREATE UNIQUE INDEX personorganization_pkey ON public.personorganization USING btree (id)
+
+Constraints:
+fk_personorganization_organization (FOREIGN KEY): Column - organization, References organization(id)
+fk_personorganization_person (FOREIGN KEY): Column - person, References person(id)
+personorganization_pkey (PRIMARY KEY): Column - id
+
+====================================================================================================
+
